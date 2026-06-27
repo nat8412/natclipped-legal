@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NAT Clipped — Legal</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <style>
+    :root {
+      --purple: #7c3aed;
+      --blue: #4b63ff;
+      --pink: #c084fc;
+      --bg: #070912;
+      --surface: rgba(18, 23, 42, 0.95);
+      --border: rgba(130, 103, 255, 0.28);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --dim: #4b5563;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      background-image:
+        radial-gradient(ellipse at top left, rgba(124, 58, 237, 0.18), transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(75, 99, 255, 0.12), transparent 50%);
+    }
+
+    /* ── Header ── */
+    header {
+      background: linear-gradient(135deg, rgba(11,15,29,0.98), rgba(24,28,53,0.96));
+      border-bottom: 1px solid var(--border);
+      padding: 20px 32px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(12px);
+    }
+
+    header img.logo {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 12px rgba(124, 58, 237, 0.7));
+    }
+
+    header .brand {
+      font-size: 1.3rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #c084fc, #7c3aed, #4b63ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+    }
+
+    header nav {
+      margin-left: auto;
+      display: flex;
+      gap: 8px;
+    }
+
+    header nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 8px;
+      transition: color 0.15s, background 0.15s;
+    }
+
+    header nav a:hover {
+      color: #fff;
+      background: rgba(124, 58, 237, 0.15);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      text-align: center;
+      padding: 72px 24px 56px;
+    }
+
+    .hero-logo {
+      width: 96px;
+      height: 96px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 24px rgba(124, 58, 237, 0.6));
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #c084fc 0%, #7c3aed 40%, #4b63ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .hero .updated {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 0.78rem;
+      color: var(--dim);
+      background: rgba(130, 103, 255, 0.1);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 4px 14px;
+    }
+
+    /* ── Nav pills ── */
+    .pill-nav {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 24px 48px;
+      flex-wrap: wrap;
+    }
+
+    .pill-nav a {
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 8px 22px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--pink);
+      background: rgba(124, 58, 237, 0.08);
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .pill-nav a:hover {
+      background: rgba(124, 58, 237, 0.22);
+      border-color: rgba(130, 103, 255, 0.55);
+    }
+
+    /* ── Main layout ── */
+    main {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ── Section cards ── */
+    .section-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 36px 40px;
+      margin-bottom: 24px;
+    }
+
+    .section-card + .section-card {
+      margin-top: 0;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--pink);
+      background: rgba(192, 132, 252, 0.1);
+      border: 1px solid rgba(192, 132, 252, 0.25);
+      border-radius: 20px;
+      padding: 4px 12px;
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #f5f7fb;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #d8b4fe;
+      margin: 24px 0 8px;
+    }
+
+    h3:first-of-type {
+      margin-top: 0;
+    }
+
+    p {
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 0.92rem;
+      margin-bottom: 12px;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    ul {
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 0.92rem;
+      padding-left: 20px;
+      margin-bottom: 12px;
+    }
+
+    ul li { margin-bottom: 4px; }
+
+    a {
+      color: var(--pink);
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 24px 0;
+    }
+
+    /* ── Contact card ── */
+    .contact-card {
+      background: linear-gradient(135deg, rgba(124,58,237,0.12), rgba(75,99,255,0.08));
+      border: 1px solid rgba(130,103,255,0.35);
+      border-radius: 14px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    .contact-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .contact-card p {
+      margin: 0;
+    }
+
+    .contact-email {
+      font-weight: 700;
+      color: #c4b5fd;
+      font-size: 0.95rem;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 32px 24px 48px;
+      color: var(--dim);
+      font-size: 0.78rem;
+      border-top: 1px solid var(--border);
+    }
+
+    footer .footer-logo {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      opacity: 0.5;
+      margin-bottom: 10px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .section-card { padding: 24px 20px; }
+      .hero h1 { font-size: 1.8rem; }
+      header { padding: 14px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img class="logo" src="logo_animated.gif" alt="NAT Clipped">
+    <span class="brand">NAT Clipped</span>
+    <nav>
+      <a href="#privacy">Privacy Policy</a>
+      <a href="#tos">Terms of Service</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <img class="hero-logo" src="logo_animated.gif" alt="NAT Clipped Logo">
+    <h1>Legal &amp; Privacy</h1>
+    <p>We believe in being straight with you about how NAT Clipped works and what we do with your information — which isn't much.</p>
+    <span class="updated">Last updated: June 27, 2026</span>
+  </div>
+
+  <div class="pill-nav">
+    <a href="#privacy">Privacy Policy</a>
+    <a href="#tos">Terms of Service</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <main>
+
+    <!-- ── Privacy Policy ── -->
+    <div class="section-card" id="privacy">
+      <span class="section-label">📋 Document</span>
+      <h2>Privacy Policy</h2>
+
+      <h3>What NAT Clipped Is</h3>
+      <p>NAT Clipped is a locally installed desktop application for Windows. It runs on your own computer and is used to capture, trim, and post gaming clips. We do not operate servers that store your personal data.</p>
+
+      <div class="divider"></div>
+
+      <h3>Information We Collect</h3>
+      <p>NAT Clipped collects minimal information to function:</p>
+      <ul>
+        <li><strong>OBS Connection Settings</strong> — host, port, and password used to connect to your local OBS instance. Stored locally on your machine only.</li>
+        <li><strong>Twitch Username</strong> — optionally provided by you for social posting features. Stored locally on your machine only.</li>
+        <li><strong>Voice Command Phrases</strong> — phrases you record to trigger clips. Audio samples are processed locally and only the resulting text transcript is stored. Raw audio is never retained.</li>
+        <li><strong>Clip Files</strong> — video files captured from OBS are stored locally on your machine in folders you configure. We do not upload or transmit clip content without your explicit action.</li>
+        <li><strong>App Configuration</strong> — settings such as layout preferences, hotkeys, and overlay configurations. Stored locally in a JSON file on your machine.</li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <h3>Third-Party Services</h3>
+      <p>NAT Clipped integrates with the following third-party services when you use specific features:</p>
+      <ul>
+        <li><strong>Google Speech Recognition</strong> — when voice commands are enabled, audio captured by your microphone is sent to Google's speech-to-text API for transcription. This is subject to <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</li>
+        <li><strong>OBS WebSocket</strong> — communicates with your locally installed OBS Studio instance. No data leaves your machine through this integration.</li>
+        <li><strong>Twitch API</strong> — used to authenticate your Twitch account when you use Twitch-connected features. Subject to <a href="https://www.twitch.tv/p/en/legal/privacy-notice/" target="_blank">Twitch's Privacy Policy</a>.</li>
+        <li><strong>TikTok API</strong> — used to post clips to TikTok when you use that feature. Subject to <a href="https://www.tiktok.com/legal/page/us/privacy-policy/en" target="_blank">TikTok's Privacy Policy</a>.</li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <h3>Data We Do Not Collect</h3>
+      <ul>
+        <li>We do not collect analytics or usage telemetry</li>
+        <li>We do not create user accounts or store credentials on external servers</li>
+        <li>We do not sell, share, or transmit your personal information to third parties</li>
+        <li>We do not access your clip files or configuration without your direct action</li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <h3>Data Storage and Retention</h3>
+      <p>All data NAT Clipped generates is stored locally on your machine. Uninstalling the application removes the application files. Your clip files and configuration are stored in folders you control and are not affected by uninstalling unless you choose to delete them.</p>
+
+      <div class="divider"></div>
+
+      <h3>Children's Privacy</h3>
+      <p>NAT Clipped is not directed at children under 13. We do not knowingly collect personal information from children under 13. If you believe a child has provided personal information, please contact us.</p>
+
+      <div class="divider"></div>
+
+      <h3>Changes to This Policy</h3>
+      <p>We may update this privacy policy from time to time. Changes will be posted on this page with an updated date. Continued use of the application after changes constitutes acceptance of the revised policy.</p>
+    </div>
+
+    <!-- ── Terms of Service ── -->
+    <div class="section-card" id="tos">
+      <span class="section-label">📄 Document</span>
+      <h2>Terms of Service</h2>
+
+      <h3>Acceptance of Terms</h3>
+      <p>By downloading, installing, or using NAT Clipped, you agree to these Terms of Service. If you do not agree, do not use the application.</p>
+
+      <div class="divider"></div>
+
+      <h3>License</h3>
+      <p>NAT Clipped is proprietary software. We grant you a limited, non-exclusive, non-transferable license to use the application for personal, non-commercial purposes. You may not copy, modify, distribute, sell, or reverse-engineer the application without our express written permission.</p>
+
+      <div class="divider"></div>
+
+      <h3>Acceptable Use</h3>
+      <p>You agree to use NAT Clipped only for lawful purposes. You may not use the application to:</p>
+      <ul>
+        <li>Capture, store, or distribute content that violates any applicable law</li>
+        <li>Infringe on the intellectual property rights of others</li>
+        <li>Post or distribute content that violates the terms of any connected platform (Twitch, TikTok, etc.)</li>
+        <li>Harass, defame, or harm any individual</li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <h3>Third-Party Platforms</h3>
+      <p>NAT Clipped connects to third-party platforms including Twitch and TikTok. Your use of these platforms is governed by their respective terms of service. We are not responsible for any actions taken by those platforms regarding your account or content.</p>
+
+      <div class="divider"></div>
+
+      <h3>Content Responsibility</h3>
+      <p>You are solely responsible for the content you capture, edit, and post using NAT Clipped. This includes ensuring you have the rights to any music, footage, or other media included in your clips. We are not liable for copyright claims or platform violations arising from content you post.</p>
+
+      <div class="divider"></div>
+
+      <h3>Disclaimer of Warranties</h3>
+      <p>NAT Clipped is provided "as is" without warranty of any kind, express or implied. We do not warrant that the application will be error-free, uninterrupted, or meet your specific requirements.</p>
+
+      <div class="divider"></div>
+
+      <h3>Limitation of Liability</h3>
+      <p>To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of NAT Clipped, including but not limited to loss of data, loss of revenue, or interruption of service.</p>
+
+      <div class="divider"></div>
+
+      <h3>Changes to These Terms</h3>
+      <p>We reserve the right to modify these terms at any time. Updated terms will be posted on this page. Continued use of the application after changes constitutes your acceptance of the revised terms.</p>
+
+      <div class="divider"></div>
+
+      <h3>Governing Law</h3>
+      <p>These terms are governed by applicable law. Any disputes will be resolved in accordance with the laws of the jurisdiction in which the developer operates.</p>
+    </div>
+
+    <!-- ── Contact ── -->
+    <div class="section-card" id="contact">
+      <span class="section-label">✉️ Get In Touch</span>
+      <h2>Contact Us</h2>
+      <p>If you have questions about this privacy policy, these terms, or NAT Clipped in general, reach out directly.</p>
+      <div class="contact-card">
+        <span class="contact-icon">📧</span>
+        <div>
+          <p class="contact-email">nat3g815@yahoo.com</p>
+          <p style="font-size:0.8rem;margin-top:2px;">We'll get back to you as soon as we can.</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <img class="footer-logo" src="logo_animated.gif" alt="">
+    <p>&copy; 2026 NAT Clipped. All rights reserved.</p>
+    <p style="margin-top:6px;">Built for streamers who'd rather be playing.</p>
+  </footer>
+
+</body>
+</html>
