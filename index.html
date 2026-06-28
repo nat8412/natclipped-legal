@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <title>NAT Clipped — Clip Tool for Streamers</title>
   <link rel="icon" type="image/png" href="LogoV2.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <style>
     :root {
       --purple: #7c3aed;
@@ -266,7 +267,11 @@
       white-space: nowrap;
     }
 
-    .platform-badge span { font-size: 1.1rem; }
+    .platform-badge i { font-size: 1.1rem; }
+    .platform-badge .twitch-icon   { color: #9146ff; }
+    .platform-badge .tiktok-icon   { color: #ff0050; }
+    .platform-badge .instagram-icon{ color: #e1306c; }
+    .platform-badge .obs-icon      { color: #cbd5e1; }
 
     /* ── How it works ── */
     .steps {
@@ -428,7 +433,7 @@
   <div class="hero">
     <img class="hero-logo" src="Logo Animated.gif" alt="NAT Clipped Logo">
     <h1>Clip it. Trim it.<br>Post it.</h1>
-    <p class="tagline">NAT Clipped is a Windows desktop app for streamers. Capture clips from OBS, trim and edit them, add overlays and sound effects, then post directly to TikTok and Twitch — without ever leaving your setup.</p>
+    <p class="tagline">NAT Clipped is a Windows desktop app for streamers. Capture clips from OBS, trim and edit them, add overlays and sound effects, then post directly to TikTok, Twitch, Instagram, and more — without ever leaving your setup.</p>
     <span class="hero-badge">Windows Desktop App &nbsp;·&nbsp; Built for Streamers</span>
   </div>
 
@@ -515,7 +520,7 @@
       <div class="step">
         <div class="step-num">4</div>
         <h3>Post It</h3>
-        <p>Upload directly to TikTok or Twitch with one click. Done.</p>
+        <p>Upload directly to TikTok, Twitch, Instagram, and more with one click. Done.</p>
       </div>
     </div>
 
@@ -527,9 +532,10 @@
         <p>NAT Clipped connects to the platforms streamers actually use. Authenticate once and post directly from the app — no downloading and re-uploading.</p>
       </div>
       <div class="platform-badges">
-        <div class="platform-badge"><span>📺</span> Twitch</div>
-        <div class="platform-badge"><span>🎵</span> TikTok</div>
-        <div class="platform-badge"><span>🔴</span> OBS Studio</div>
+        <div class="platform-badge"><i class="fab fa-twitch twitch-icon"></i> Twitch</div>
+        <div class="platform-badge"><i class="fab fa-tiktok tiktok-icon"></i> TikTok</div>
+        <div class="platform-badge"><i class="fab fa-instagram instagram-icon"></i> Instagram</div>
+        <div class="platform-badge"><i class="fas fa-record-vinyl obs-icon"></i> OBS Studio</div>
       </div>
     </div>
 
