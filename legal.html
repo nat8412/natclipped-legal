@@ -318,7 +318,7 @@
     <img class="hero-logo" src="Logo Animated.gif" alt="NAT Clipped Logo">
     <h1>Legal &amp; Privacy</h1>
     <p>We believe in being straight with you about how NAT Clipped works and what we do with your information — which isn't much.</p>
-    <span class="updated">Last updated: June 27, 2026</span>
+    <span class="updated">Last updated: June 29, 2026</span>
   </div>
 
   <div class="pill-nav">
@@ -343,7 +343,8 @@
       <p>NAT Clipped collects minimal information to function:</p>
       <ul>
         <li><strong>OBS Connection Settings</strong> — host, port, and password used to connect to your local OBS instance. Stored locally on your machine only.</li>
-        <li><strong>Twitch Username</strong> — optionally provided by you for social posting features. Stored locally on your machine only.</li>
+        <li><strong>Twitch Account Credentials</strong> — if you connect a Twitch account or bot account, OAuth access and refresh tokens are stored locally on your machine to maintain the connection. These are never transmitted to us or any party other than Twitch.</li>
+        <li><strong>Viewer Clip Count Data</strong> — when Twitch chat integration is enabled, the usernames of viewers who use the clip command and their cumulative clip counts are stored locally in a data file on your machine. This data powers in-chat features like !myclips and !topclippers and is never transmitted off your machine.</li>
         <li><strong>Voice Command Phrases</strong> — phrases you record to trigger clips. Audio samples are processed locally and only the resulting text transcript is stored. Raw audio is never retained.</li>
         <li><strong>Clip Files</strong> — video files captured from OBS are stored locally on your machine in folders you configure. We do not upload or transmit clip content without your explicit action.</li>
         <li><strong>App Configuration</strong> — settings such as layout preferences, hotkeys, and overlay configurations. Stored locally in a JSON file on your machine.</li>
@@ -356,7 +357,7 @@
       <ul>
         <li><strong>Google Speech Recognition</strong> — when voice commands are enabled, audio captured by your microphone is sent to Google's speech-to-text API for transcription. This is subject to <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</li>
         <li><strong>OBS WebSocket</strong> — communicates with your locally installed OBS Studio instance. No data leaves your machine through this integration.</li>
-        <li><strong>Twitch API</strong> — used to authenticate your Twitch account when you use Twitch-connected features. Subject to <a href="https://www.twitch.tv/p/en/legal/privacy-notice/" target="_blank">Twitch's Privacy Policy</a>.</li>
+        <li><strong>Twitch</strong> — when Twitch integration is enabled, NAT Clipped authenticates via Twitch OAuth and maintains a persistent connection to Twitch's IRC chat servers to send and receive messages. Live chat messages are processed in memory to detect clip commands; message content is not stored to disk. Viewer usernames and clip counts are stored locally as described above. All Twitch connectivity is subject to <a href="https://www.twitch.tv/p/en/legal/privacy-notice/" target="_blank">Twitch's Privacy Policy</a>.</li>
         <li><strong>TikTok API</strong> — used to post clips to TikTok when you use that feature. Subject to <a href="https://www.tiktok.com/legal/page/us/privacy-policy/en" target="_blank">TikTok's Privacy Policy</a>.</li>
       </ul>
 
