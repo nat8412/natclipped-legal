@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Connecting TikTok — NAT Clipped</title>
+  <style>
+    body { margin: 0; background: #070912; color: #f5f7fb; font-family: Segoe UI, Arial, sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+    .box { text-align: center; padding: 40px; }
+    .spinner { width: 40px; height: 40px; border: 3px solid #374151; border-top-color: #7c3aed; border-radius: 50%; animation: spin .8s linear infinite; margin: 0 auto 20px; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    p { color: #9ca3af; margin: 8px 0; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="spinner"></div>
+    <h2>Connecting your TikTok account…</h2>
+    <p>Redirecting back to NAT Clipped. You can close this tab when done.</p>
+  </div>
+  <script>
+    const LOCAL_PORT = 8766;
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code');
+    const state = params.get('state');
+    const error = params.get('error');
+
+    const dest = new URL('http://localhost:' + LOCAL_PORT + '/tiktok/callback');
+    if (code) dest.searchParams.set('code', code);
+    if (state) dest.searchParams.set('state', state);
+    if (error) dest.searchParams.set('error', error);
+
+    window.location.replace(dest.toString());
+  </script>
+</body>
+</html>
