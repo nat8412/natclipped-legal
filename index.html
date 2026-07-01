@@ -178,21 +178,6 @@
       text-align: center;
     }
 
-    .smartscreen-note {
-      max-width: 620px;
-      margin: 20px auto 0;
-      background: rgba(192, 132, 252, 0.08);
-      border: 1px solid rgba(192, 132, 252, 0.25);
-      border-radius: 12px;
-      padding: 14px 20px;
-      font-size: 0.78rem;
-      color: var(--muted);
-      line-height: 1.6;
-      text-align: left;
-    }
-
-    .smartscreen-note strong { color: #d8b4fe; }
-
     /* ── Features grid ── */
     main {
       max-width: 1280px;
@@ -491,8 +476,8 @@
     <p class="tagline">NAT Clipped is a Windows desktop app for streamers. Capture clips from OBS, trim and edit them, add overlays and sound effects, then post directly to TikTok, Twitch, Instagram, and more — without ever leaving your setup.</p>
     <span class="hero-badge">Windows Desktop App &nbsp;·&nbsp; Built for Streamers</span>
     <div>
-      <a class="btn-download" href="mailto:natclipped@gmail.com?subject=NAT%20Clipped%20-%20Request%20Access">
-        <i class="fas fa-envelope"></i> Request Access
+      <a class="btn-download" href="mailto:natclipped@gmail.com?subject=NAT%20Clipped%20-%20Request%20Access" onclick="requestAccessClick(this)">
+        <i class="fas fa-envelope"></i> <span class="btn-download-label">Request Access</span>
       </a>
     </div>
   </div>
@@ -504,13 +489,10 @@
       <span class="section-label">⬇ Get Access</span>
       <h2 class="section-title">Get NAT Clipped</h2>
       <p class="section-sub">Free. Windows 10/11 (64-bit). Currently in private early access — email us and we'll send you the installer.</p>
-      <a class="btn-download" href="mailto:natclipped@gmail.com?subject=NAT%20Clipped%20-%20Request%20Access">
-        <i class="fas fa-envelope"></i> Request Access
+      <a class="btn-download" href="mailto:natclipped@gmail.com?subject=NAT%20Clipped%20-%20Request%20Access" onclick="requestAccessClick(this)">
+        <i class="fas fa-envelope"></i> <span class="btn-download-label">Request Access</span>
       </a>
-      <p class="download-meta">~130 MB once you're in &nbsp;·&nbsp; natclipped@gmail.com</p>
-      <div class="smartscreen-note">
-        <strong>Windows may show a "Windows protected your PC" warning</strong> the first time you run it — this is normal for new apps that don't yet have a paid code-signing certificate, not a sign of a problem. Click <strong>More info</strong>, then <strong>Run anyway</strong>.
-      </div>
+      <p class="download-meta">~130 MB once you're in &nbsp;·&nbsp; <span id="access-email-fallback">natclipped@gmail.com</span></p>
     </div>
 
     <!-- ── Features ── -->
@@ -636,5 +618,22 @@
     <p style="margin-top:6px;">Built for streamers who'd rather be playing.</p>
   </footer>
 
+  <script>
+    // mailto: links silently do nothing if the visitor has no default mail
+    // client registered -- copy the address to the clipboard as a guaranteed
+    // fallback so clicking "Request Access" always does *something* visible,
+    // on top of still attempting the native mailto: navigation.
+    function requestAccessClick(el) {
+      try {
+        navigator.clipboard.writeText('natclipped@gmail.com');
+        var label = el.querySelector('.btn-download-label');
+        var original = label.textContent;
+        label.textContent = 'Copied! natclipped@gmail.com';
+        setTimeout(function () { label.textContent = original; }, 3000);
+      } catch (e) {
+        // clipboard API unavailable -- mailto: is still the fallback
+      }
+    }
+  </script>
 </body>
 </html>
