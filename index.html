@@ -304,7 +304,10 @@
       font-weight: 700;
       color: #c4b5fd;
       white-space: nowrap;
+      text-decoration: none;
+      transition: border-color 0.15s, background 0.15s;
     }
+    a.platform-badge:hover { border-color: rgba(124, 58, 237, 0.6); background: rgba(124, 58, 237, 0.18); }
 
     .platform-badge i { font-size: 1.1rem; }
     .platform-badge .twitch-icon   { color: #9146ff; }
@@ -577,10 +580,11 @@
         <p>NAT Clipped connects to the platforms streamers actually use. Authenticate once and post directly from the app — no downloading and re-uploading.</p>
       </div>
       <div class="platform-badges">
-        <div class="platform-badge"><i class="fab fa-twitch twitch-icon"></i> Twitch</div>
-        <div class="platform-badge"><i class="fab fa-tiktok tiktok-icon"></i> TikTok</div>
-        <div class="platform-badge"><svg viewBox="0 0 24 24" width="24" height="24"><rect x="0" y="3.5" width="24" height="17" rx="6" ry="6" fill="#FF0000"/><polygon points="9.5,8.4 9.5,15.6 16,12" fill="#FFFFFF"/></svg> YouTube</div>
-        <div class="platform-badge"><i class="fab fa-instagram instagram-icon"></i> Instagram</div>
+        <a class="platform-badge" href="https://www.twitch.tv/natclipped" target="_blank" rel="noopener"><i class="fab fa-twitch twitch-icon"></i> Twitch</a>
+        <a class="platform-badge" href="https://www.tiktok.com/@natclipped" target="_blank" rel="noopener"><i class="fab fa-tiktok tiktok-icon"></i> TikTok</a>
+        <a class="platform-badge" href="https://www.youtube.com/@NATCLipped" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="24" height="24"><rect x="0" y="3.5" width="24" height="17" rx="6" ry="6" fill="#FF0000"/><polygon points="9.5,8.4 9.5,15.6 16,12" fill="#FFFFFF"/></svg> YouTube</a>
+        <a class="platform-badge" href="https://www.instagram.com/natclipped/" target="_blank" rel="noopener"><i class="fab fa-instagram instagram-icon"></i> Instagram</a>
+        <a class="platform-badge" href="https://x.com/NATClipped" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> X</a>
         <div class="platform-badge"><i class="fas fa-record-vinyl obs-icon"></i> OBS Studio</div>
       </div>
     </div>
